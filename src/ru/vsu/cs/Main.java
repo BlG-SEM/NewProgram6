@@ -80,7 +80,7 @@ public class Main {
     }
 
     private static void printResult(String text, double sum) {
-        System.out.printf("The sum %s: %f\n", text, sum);
+        System.out.printf("The sum %s = %f\n", text, sum);
     }
 }
 
