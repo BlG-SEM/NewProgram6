@@ -10,20 +10,23 @@ public class Main {
 
         double x = readVariable("x");
         double numberOfMembers = readVariable("numberOfMembers");
-        double eps= readVariable("epsilon");
+        double eps = readVariable("epsilon");
 
         double sumOfSequence = calculateSumOfSequence(x, numberOfMembers);
-        printResult("of N elements", sumOfSequence);
+        printResult("The sum of N elements", sumOfSequence);
 
         double sumOfSequenceWithEpsilon = calculateSumOfSequenceWithEpsilon(x, numberOfMembers, eps);
-        printResult("of N elements whose absolute value exceeds epsilon", sumOfSequenceWithEpsilon);
+        printResult("The sum of N elements whose absolute value exceeds epsilon", sumOfSequenceWithEpsilon);
 
         double sumOfSequenceWithEpsilonDividedBy10 = calculateSumOfSequenceWithEpsilon(x, numberOfMembers, eps / 10);
-        printResult("of N elements whose absolute value exceeds epsilon divided by 10",
-                sumOfSequenceWithEpsilonDividedBy10);
+        printResult("The sum of N elements whose absolute value exceeds epsilon divided by 10", sumOfSequenceWithEpsilonDividedBy10);
 
-        double sumOfSequenceWithMath = Math.sin(x) / x;
-        printResult("using Math", sumOfSequenceWithMath);
+        if (x == 0) {
+            printResult("The sum cannot be calculated because x ", x);
+        } else {
+            double sumOfSequenceWithMath = Math.sin(x) / x;
+            printResult("The sum using Math", sumOfSequenceWithMath);
+        }
     }
 
     private static double readVariable(String name) {
@@ -41,11 +44,10 @@ public class Main {
     }
 
     private static int calculateFactorial(int value) {
-        int result = 1;
         for (int i = 1; i <= value; i++) {
-            result = result * i;
+            value = value * i;
         }
-        return result;
+        return value;
     }
 
     private static double calculateAbs(double x) {
@@ -62,9 +64,14 @@ public class Main {
     }
 
     private static double calculateSumOfSequence(double x, double numberOfMembers) {
-        double sum = 0;
-        for (int i = 0; i <= numberOfMembers; i++) {
-            sum += calculateNthMemberOfSequence(x, i);
+        double sum;
+        if (numberOfMembers == 0) {
+            sum = 0;
+        } else {
+            sum = 1;
+            for (int i = 0; i <= numberOfMembers; i++) {
+                sum += calculateNthMemberOfSequence(x, i);
+            }
         }
         return sum;
     }
@@ -79,8 +86,9 @@ public class Main {
         return sum;
     }
 
-    private static void printResult(String text, double sum) {
-        System.out.printf("The sum %s = %f\n", text, sum);
+    private static void printResult(String text, double variable) {
+        System.out.printf(" %s = %2$.3f\n", text, variable);
     }
 }
+
 
