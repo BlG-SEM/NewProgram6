@@ -28,7 +28,7 @@ public class Main {
 
     private static double readVariable(String name) {
         Scanner scanner = new Scanner(System.in);
-        System.out.printf("Enter %s: ", name);
+        System.out.printf("Enter %s = ", name);
         return scanner.nextDouble();
     }
 
